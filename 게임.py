@@ -2,6 +2,7 @@ import pygame
 import time
 import sys
 
+a = 0
 #편의성을 위한 함수 정
 def screen_set(a, b, c):
     screen.blit(a, (b, c))
