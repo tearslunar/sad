@@ -3,7 +3,7 @@ import time
 import sys
 
 a = 0
-#편의성을 위한 함수 정
+#편의성을 위한 함수 정의
 def screen_set(a, b, c):
     screen.blit(a, (b, c))
     
@@ -25,9 +25,7 @@ screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Tears_identity.Beta")
 
 #이미지 미리 불러오기
-start_background = pygame.image.load("사진\시작화면1.png")
-start_click = pygame.image.load("사진\startclick.png")
-end_click = pygame.image.load("사진\endclick.png")
+start_background = pygame.image.load("사진\시작화면.png")
 
 #시작화면 이미지 설정
 screen_set(start_background, 0, 0)
@@ -37,7 +35,6 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running  = False 
-    startButton = Button(start_click,280,260, 220,90,end_click,280,260,None)
     pygame.display.update()
 
 pygame.quit()
