@@ -2,6 +2,9 @@ import pygame
 import time
 import sys
 
+#불러오기용 텍스트 파일 만들기
+f = open("status", "w")
+
 a = 0
 #편의성을 위한 함수 정의
 def screen_set(a, b, c):
@@ -37,5 +40,6 @@ while running:
             running  = False 
     pygame.display.update()
 
+f.close()
 pygame.quit()
 
