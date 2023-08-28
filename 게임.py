@@ -2,8 +2,17 @@ import pygame
 import time
 import sys
 
-#불러오기용 텍스트 파일 만들기
+#변수
+fatigue = 0
+hp = 100
+money = 0
+
+
+#불러오기용 텍스트 파일 만들기 & 불러오기에 필요한 변수들 만들기
 f = open("status", "w")
+f.write("fatigue : \n")
+f.write("hp : \n")
+f.write("money : \n")
 
 a = 0
 #편의성을 위한 함수 정의
