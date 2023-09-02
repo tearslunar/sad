@@ -35,6 +35,12 @@ width , height = 420, 690
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Tears_identity.Beta")
 
+bitmap_2 = pygame.cursors.Cursor(
+    (24, 24), (0, 0), *pygame.cursors.compile(pygame.cursors.thickarrow_strings)
+)
+pygame.mouse.set_cursor(bitmap_2)
+
+
 #이미지 미리 불러오기
 start_background = pygame.image.load("사진\시작화면.png")
 
@@ -48,5 +54,5 @@ while running:
             running  = False 
     pygame.display.update()
 
-f.close()
+status.close()
 pygame.quit()
