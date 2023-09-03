@@ -25,8 +25,7 @@ class Button:
         if x + width > mouse[0] > x and y + height > mouse[1] > y:
             screen.blit(img_act,(x_act, y_act))
             if click[0] and action != None:
-                screen_set(start_background, 0, 0)
-#                time.sleep(1)
+                screen_set(start_background, 10, 10)
         else:
             screen.blit(img_in,(x,y))
             
