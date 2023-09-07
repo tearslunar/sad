@@ -1,10 +1,10 @@
-import pickle
 import pygame
 import time
 import sys
 
 #변수
-gamestart = 0
+fps = 15
+background = 0  
 fatigue = 0
 hp = 100
 money = 0
@@ -26,12 +26,14 @@ class Button:
         if x + width > mouse[0] > x and y + height > mouse[1] > y:
             screen.blit(img_act,(x_act, y_act))
             if click[0] and action != None:
-                global gamestart
-                gamestart = 1
-                screen_set(start_background, 10, 10) #메인화면
+                screen_set(start_background, 100, 100) #메인화면
         else:
             screen.blit(img_in,(x,y))
             
+
+#fps
+fps = pygame.time.Clock()
+
 #class click:
 #    def __init__(self, x, y):
 #        mouse = pygame.mouse.get_pos()
@@ -55,17 +57,18 @@ start_off = pygame.image.load("사진\START.png")
 #시작화면 이미지 설정
 #screen_set(start_background, 0, 0)
 
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running  = False
-    screen_set(start_background, 0, 0)
-    if gamestart == 0:
-        Button(start_off,235,235,158,61,start_on,235,235,1)
-        print(gamestart)
-        
-    pygame.display.update()
+
+def startgame():
+    while True:
+        screen_set(start_background, 0, 0)
+        Button(start_off,235,235,158,61,start_on,235,235,2)
+        pygame.display.update()
+        fps.tick(30)
+        for event in pygame.event.get():
+            if event.type==pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+startgame()
 
 status.close()
 pygame.quit()
