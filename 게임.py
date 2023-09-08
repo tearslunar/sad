@@ -20,13 +20,15 @@ def screen_set(a, b, c):
     screen.blit(a, (b, c))
     
 class Button:
-    def __init__(self, img_in, x, y, width, height, img_act, x_act, y_act, action = None):
+    def __init__(self, img_in, x, y, width, height, img_act, x_act, y_act):
         mouse = pygame.mouse.get_pos()
         click = pygame.mouse.get_pressed()
         if x + width > mouse[0] > x and y + height > mouse[1] > y:
             screen.blit(img_act,(x_act, y_act))
-            if click[0] and action != None:
-                screen_set(start_background, 100, 100) #메인화면
+            if click[0]:
+                global background
+                background =+ 1
+                screen.fill('Black')
         else:
             screen.blit(img_in,(x,y))
             
@@ -40,8 +42,7 @@ fps = pygame.time.Clock()
 #        click + pygame.mouse.get_pressed()
             
 pygame.init()
-width , height = 420, 690
-screen = pygame.display.set_mode((width, height))
+screen = pygame.display.set_mode((420, 690))
 pygame.display.set_caption("Tears_identity.Beta")
 
 #마우스포인터 커스텀으로 변경
@@ -60,14 +61,21 @@ start_off = pygame.image.load("사진\START.png")
 
 def startgame():
     while True:
-        screen_set(start_background, 0, 0)
-        Button(start_off,235,235,158,61,start_on,235,235,2)
-        pygame.display.update()
-        fps.tick(30)
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+        
+        if background == 0:
+            screen_set(start_background, 0, 0)
+            Button(start_off,235,235,158,61,start_on,235,235)
+        
+        elif background == 1:
+            screen_set(start_background, 0, 0)
+            
+        pygame.display.update()
+        fps.tick(60)
+
 startgame()
 
 status.close()
