@@ -6,7 +6,6 @@ import sys
 background = 0  
 fatigue = 100
 hp = 100
-Lv = 1
 money = 0
 
 #불러오기용 텍스트 파일 만들기 & 불러오기에 필요한 변수들 만들기
@@ -37,10 +36,6 @@ class Button:
 #fps
 fps = pygame.time.Clock()
 
-#class click:
-#    def __init__(self, x, y):
-#        mouse = pygame.mouse.get_pos()
-#        click + pygame.mouse.get_pressed()
             
 pygame.init()
 screen = pygame.display.set_mode((420, 690))
@@ -75,8 +70,12 @@ for i in range(8):
     text_x.append(i*32)
 
 def start_text():
+    
     for i in range(8):
-        screen.blit(textlist[i], (150+text_x[i],280))
+        screen.blit(text_list[i], (70+text_x[i],280))
+        pygame.display.update()
+        time.sleep(0.2)
+    time.sleep(1)
 
 
 
@@ -92,12 +91,11 @@ def startgame():
         
         
         if start_tt == 0:
-            for i in range(8):
-                screen.blit(text_list[i], (100+text_x[i],280))
-                pygame.display.update()
-                time.sleep(0.2)
-            start_tt = int(start_tt) + 1
-        
+            start_text()
+            start_tt =+ 1
+            
+        else:
+            screen_set(start_background, 0, 0)
         #if background == 0:
         #    screen_set(start_background, 0, 0)
         #    Button(start_off,235,235,158,61,start_on,235,235)
