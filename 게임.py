@@ -3,20 +3,25 @@ import time
 import sys
 import random
 
+#게임 목표 = 급격하게 생계가 안좋아지자 대대로 내려오는 가보를 팔아 어떻게든 살다가 20살이되고 열심히 일하고 돈을벌어서
+#가보를 되찾자
+
 #변수
 background = 0  
 fatigue = 100
 hp = 100
 money = 0
 
+price0 = random.randrange(1000, 50000)
+price1 = random.randrange(1000, 50000)
+price2 = random.randrange(1000, 50000)
+price3 = random.randrange(1000, 50000)
+price4 = random.randrange(1000, 50000) #처음 시작할떄 주식 가격 정하기
 
-price0 = random.randrange(1000, 200000)
-price1 = random.randrange(1000, 200000)
-price2 = random.randrange(1000, 200000)
-price3 = random.randrange(1000, 200000)
-price4 = random.randrange(1000, 200000)
-
-print(price0, price1, price2, price3, price4)
+#아이템 리스트
+item_list = [
+    water, ramen, 
+]
 
 #불러오기용 텍스트 파일 만들기 & 불러오기에 필요한 변수들 만들기
 status = open("status", "w")
@@ -49,7 +54,13 @@ def stock():
     price3 = random.randrange(1000, 50000)
     price4 = random.randrange(1000, 50000)
 
-    print(price0, price1, price2, price3, price4)
+    #print(price0, price1, price2, price3, price4)
+
+def item():
+    if item_use_water == True:
+        hp =+ 10
+        fatigue =+ 10
+        item_use_water = False
     
     
 
