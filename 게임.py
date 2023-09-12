@@ -1,12 +1,22 @@
 import pygame
 import time
 import sys
+import random
 
 #변수
 background = 0  
 fatigue = 100
 hp = 100
 money = 0
+
+
+price0 = random.randrange(1000, 200000)
+price1 = random.randrange(1000, 200000)
+price2 = random.randrange(1000, 200000)
+price3 = random.randrange(1000, 200000)
+price4 = random.randrange(1000, 200000)
+
+print(price0, price1, price2, price3, price4)
 
 #불러오기용 텍스트 파일 만들기 & 불러오기에 필요한 변수들 만들기
 status = open("status", "w")
@@ -32,6 +42,17 @@ class Button:
         else:
             screen.blit(img_in,(x,y))
             
+def stock():
+    price0 = random.randrange(1000, 50000)
+    price1 = random.randrange(1000, 50000)
+    price2 = random.randrange(1000, 50000)
+    price3 = random.randrange(1000, 50000)
+    price4 = random.randrange(1000, 50000)
+
+    print(price0, price1, price2, price3, price4)
+    
+    
+
 
 #fps
 fps = pygame.time.Clock()
@@ -80,6 +101,8 @@ def start_text():
 
 
 def startgame():
+
+    start_ticks = pygame.time.get_ticks()
     
     global start_tt
     
@@ -89,6 +112,11 @@ def startgame():
                 pygame.quit()
                 sys.exit()
         
+        elapsed_time = (pygame.time.get_ticks() - start_ticks) / 1000
+        
+        if int(elapsed_time) % 303 == 0 and int(elapsed_time) != 0: #3초 딜레이 생김 해결
+            stock()
+            time.sleep(1)
         
         if start_tt == 0:
             start_text()
@@ -96,6 +124,8 @@ def startgame():
             
         else:
             screen_set(start_background, 0, 0)
+         
+        
         #if background == 0:
         #    screen_set(start_background, 0, 0)
         #    Button(start_off,235,235,158,61,start_on,235,235)
