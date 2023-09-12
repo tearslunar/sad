@@ -20,7 +20,7 @@ price4 = random.randrange(1000, 50000) #처음 시작할떄 주식 가격 정하
 
 #아이템 리스트
 item_list = [
-    water, ramen, 
+    'water', 'ramen'
 ]
 
 #불러오기용 텍스트 파일 만들기 & 불러오기에 필요한 변수들 만들기
