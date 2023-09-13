@@ -7,6 +7,7 @@ import random
 #가보를 되찾자
 
 #변수
+item_use = 999
 background = 0  
 fatigue = 100
 hp = 100
@@ -20,7 +21,7 @@ price4 = random.randrange(1000, 50000) #처음 시작할떄 주식 가격 정하
 
 #아이템 리스트
 item_list = [
-    'water', 'ramen'
+    '물', '라면', '피로회복제', '안경', '샤프'
 ]
 
 #불러오기용 텍스트 파일 만들기 & 불러오기에 필요한 변수들 만들기
@@ -55,12 +56,8 @@ def stock():
     price4 = random.randrange(1000, 50000)
 
     #print(price0, price1, price2, price3, price4)
+    
 
-def item():
-    if item_use_water == True:
-        hp =+ 10
-        fatigue =+ 10
-        item_use_water = False
     
     
 
@@ -82,6 +79,20 @@ pygame.mouse.set_cursor(diamond)
 start_background = pygame.image.load("사진\시작화면.png")
 start_on = pygame.image.load("사진\START1.png")
 start_off = pygame.image.load("사진\START.png")
+
+font0 = pygame.font.SysFont("malgungothic", 40)
+def item():
+    global font0
+    global item_use
+    global item_list
+    
+    if item_use == 0:
+        text_item0 = font0.render("물을 마셨습니다\
+                                  체력과 피로가 각각 10씩 회복됩니다.", True, 'White')
+        screen.blit(text_item0, (70,280))
+        print('000000')
+        pygame.display.update()
+        item_use = 999
 
 #시작화면 이미지 설정
 #screen_set(start_background, 0, 0)
@@ -116,25 +127,32 @@ def startgame():
     start_ticks = pygame.time.get_ticks()
     
     global start_tt
+    global item_use
     
     while True:
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+            if event.type == pygame.KEYDOWN: #키입력 받고 타입 전환하고 각 키의 대응하는 숫자
+                if int(event.key) == 49:
+                    item_use = 0
+                    
         
         elapsed_time = (pygame.time.get_ticks() - start_ticks) / 1000
         
-        if int(elapsed_time) % 303 == 0 and int(elapsed_time) != 0: #3초 딜레이 생김 해결
+        if int(elapsed_time) % 303 == 0 and int(elapsed_time) != 0: #5분마다 주식갱신
             stock()
             time.sleep(1)
         
-        if start_tt == 0:
+        if start_tt == 0:   #실행시 제작표시
             start_text()
             start_tt =+ 1
             
         else:
             screen_set(start_background, 0, 0)
+        
+        item()                                      #아이템 사용 판단
          
         
         #if background == 0:
@@ -145,7 +163,7 @@ def startgame():
         #    screen_set(start_background, 10, 10)
             
         pygame.display.update()
-        fps.tick(60)
+        fps.tick(120)
 
 startgame()
 
