@@ -1,4 +1,5 @@
-a= 5
-b = 10
-
-print( a % b)
+import time
+time.sleep(1)
+print('1')
+time.sleep(1)
+print('2')

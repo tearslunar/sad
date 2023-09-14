@@ -3,8 +3,7 @@ import time
 import sys
 import random
 
-#게임 목표 = 급격하게 생계가 안좋아지자 대대로 내려오는 가보를 팔아 어떻게든 살다가 20살이되고 열심히 일하고 돈을벌어서
-#가보를 되찾자
+#게임 목표 = 
 
 #기본세팅
 pygame.init()
@@ -87,16 +86,14 @@ def start_text():
     time.sleep(1)
     
 
-def item():
+def item():  #아이템 사용 판단
     global font0
     global item_use
     global item_list
     
     if item_use == 0:
-        text_item0 = font0.render("물을 마셨습니다\
-                                  체력과 피로가 각각 10씩 회복됩니다.", True, 'White') #줄바꿈 해결해야됨
+        text_item0 = font0.render("물을 마셨습니다.", True, 'White')
         screen.blit(text_item0, (70,280))
-        pygame.display.update()
         item_use = 99
         
 #마우스포인터 커스텀으로 변경
@@ -116,6 +113,7 @@ def startgame():
      
     global start_tt #전역변수 선언
     global item_use
+    global money
     
     while True:
         
@@ -135,6 +133,9 @@ def startgame():
         if int(elapsed_time) % 303 == 0 and int(elapsed_time) != 0: #5분마다 주식갱신
             stock()
             time.sleep(1)
+            
+        if int(elapsed_time) % 10 == 0 and int(elapsed_time) != 0:
+            money = money + 1000
         
         if start_tt == 0:   #실행시 제작자 표시
             start_text()
@@ -145,7 +146,6 @@ def startgame():
         
         item()    #아이템 사용 판단
          
-        
         #if background == 0:
         #    screen_set(start_background, 0, 0)
         #    Button(start_off,235,235,158,61,start_on,235,235)
@@ -153,21 +153,7 @@ def startgame():
         # elif background == 1:
         #    screen_set(start_background, 10, 10)
             
-        pygame.display.update() #디스플레이 업데이트
+        pygame.display.update() #플레이 화면 업데이트
 
-startgame()
-
-status.close()
+startgame() #게임시작 
 pygame.quit()
-
-
-
-
-#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함
-#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함
-#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함
-#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함
-#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함
-#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함
-#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함
-#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함#코드정리해야함
