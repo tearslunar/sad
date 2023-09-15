@@ -31,9 +31,9 @@ text1 = font.render("작", True, 'white')
 text2 = font.render(" ", True, 'white')
 text3 = font.render(":", True, 'white')
 text4 = font.render(" ", True, 'white')
-text5 = font.render("오", True, 'white')
-text6 = font.render("현", True, 'white')
-text7 = font.render("동", True, 'white')
+text5 = font.render("", True, 'white')
+text6 = font.render("", True, 'white')
+text7 = font.render("", True, 'white')
 
 #아이템 사용 폰트
 font0 = pygame.font.SysFont("malgungothic", 40)
